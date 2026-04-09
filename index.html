@@ -7,85 +7,148 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background-color: #0f0f10; color: #e1e1e6; font-family: sans-serif; }
-        .neon-text { text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff; }
-        .card { background: #1a1a1b; border: 1px solid #333; transition: 0.3s; }
-        .card:hover { border-color: #ff00ff; transform: translateY(-5px); }
-        .dot-yellow { color: #facc15; font-weight: bold; margin-right: 8px; }
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
+        
+        body { 
+            background-color: #0f0f10; 
+            color: #f1f1f1; 
+            font-family: 'Outfit', sans-serif;
+            background-image: radial-gradient(circle at top right, #1e1b4b, #0f0f10);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #ff007f, #00f2ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+        }
+
+        .nav-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .nav-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: #00f2ff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .content-card {
+            background: #161617;
+            border-radius: 24px;
+            border: 1px solid #2d2d2e;
+        }
+
+        .btn-teoria {
+            background: linear-gradient(90deg, #ff007f, #7000ff);
+            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.3);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            background: #00ff88;
+            box-shadow: 0 0 10px #00ff88;
+            margin-right: 10px;
+        }
     </style>
 </head>
-<body>
-    <header class="p-6 border-b border-gray-800 flex justify-between items-center bg-black/50 sticky top-0 z-50">
-        <h1 class="text-3xl font-black neon-text">ZAN NETWORK</h1>
-        <div class="text-sm font-mono text-cyan-400">LAUNCH: 19.NOV.2026</div>
+<body class="min-h-screen">
+
+    <header class="p-8 max-w-6xl mx-auto flex justify-between items-center">
+        <h1 class="text-4xl tracking-tighter gradient-text">ZAN NETWORK</h1>
+        <div class="bg-black/40 border border-white/10 px-4 py-2 rounded-full text-[10px] tracking-[0.2em] uppercase text-cyan-400 font-bold">
+            <span class="status-dot"></span> Server: Active
+        </div>
     </header>
 
-    <nav class="grid grid-cols-5 gap-2 p-4 max-w-4xl mx-auto text-center sticky top-[80px] bg-[#0f0f10] z-40">
-        <a href="#inicio" class="p-4 card rounded-xl hover:bg-gray-800">
-            <i class="fa-solid fa-house text-2xl mb-2 text-cyan-400"></i>
-            <span class="block text-xs uppercase font-bold">Inicio</span>
+    <nav class="max-w-5xl mx-auto px-6 grid grid-cols-5 gap-3 mb-12">
+        <a href="#" class="nav-card p-4 rounded-2xl text-center">
+            <i class="fa-solid fa-house text-xl mb-2 text-cyan-400"></i>
+            <p class="text-[10px] uppercase tracking-wider font-bold opacity-70">Inicio</p>
         </a>
-        <a href="#misterios" class="p-4 card rounded-xl hover:bg-gray-800">
-            <i class="fa-solid fa-magnifying-glass text-2xl mb-2 text-purple-500"></i>
-            <span class="block text-xs uppercase font-bold">Misterios</span>
+        <a href="#" class="nav-card p-4 rounded-2xl text-center">
+            <i class="fa-solid fa-bolt text-xl mb-2 text-purple-400"></i>
+            <p class="text-[10px] uppercase tracking-wider font-bold opacity-70">Misterios</p>
         </a>
-        <a href="#personajes" class="p-4 card rounded-xl hover:bg-gray-800">
-            <i class="fa-solid fa-users text-2xl mb-2 text-pink-500"></i>
-            <span class="block text-xs uppercase font-bold">Personajes</span>
+        <a href="#" class="nav-card p-4 rounded-2xl text-center">
+            <i class="fa-solid fa-user-ninja text-xl mb-2 text-pink-400"></i>
+            <p class="text-[10px] uppercase tracking-wider font-bold opacity-70">Personajes</p>
         </a>
-        <a href="#trucos" class="p-4 card rounded-xl hover:bg-gray-800">
-            <i class="fa-solid fa-keyboard text-2xl mb-2 text-yellow-500"></i>
-            <span class="block text-xs uppercase font-bold">Trucos</span>
+        <a href="#" class="nav-card p-4 rounded-2xl text-center">
+            <i class="fa-solid fa-gamepad text-xl mb-2 text-yellow-400"></i>
+            <p class="text-[10px] uppercase tracking-wider font-bold opacity-70">Trucos</p>
         </a>
-        <a href="#biblioteca" class="p-4 card rounded-xl hover:bg-gray-800">
-            <i class="fa-solid fa-book text-2xl mb-2 text-green-500"></i>
-            <span class="block text-xs uppercase font-bold">Biblioteca</span>
+        <a href="#" class="nav-card p-4 rounded-2xl text-center border-cyan-500/50">
+            <i class="fa-solid fa-database text-xl mb-2 text-green-400"></i>
+            <p class="text-[10px] uppercase tracking-wider font-bold opacity-70">Biblioteca</p>
         </a>
     </nav>
 
-    <main class="max-w-4xl mx-auto p-6 space-y-12">
+    <main class="max-w-5xl mx-auto px-6 space-y-8">
         
-        <section id="misterios" class="space-y-6">
-            <h2 class="text-2xl font-bold border-l-4 border-purple-500 pl-4">EXPEDIENTES DE MISTERIOS</h2>
-            <div class="card p-6 rounded-2xl">
-                <h3 class="text-xl font-bold text-cyan-300">El Fantasma de Leonida</h3>
-                <p class="text-gray-400 mt-2">Avistamientos reportados en los pantanos durante la luna llena.</p>
-                <button onclick="document.getElementById('teorias-1').classList.toggle('hidden')" class="mt-4 text-xs font-bold uppercase tracking-widest text-pink-500 border border-pink-500/30 px-4 py-2 rounded-full hover:bg-pink-500/10 transition">Ver Teorías</button>
-                <div id="teorias-1" class="hidden mt-6 space-y-3 bg-black/40 p-4 rounded-lg border-l-2 border-yellow-500">
-                    <p><span class="dot-yellow">1.</span> Es el espíritu de un NPC de una misión secundaria eliminada.</p>
-                    <p><span class="dot-yellow">2.</span> Solo aparece si llevas el colgante de Lucia.</p>
+        <div class="content-card p-8">
+            <h2 class="text-xs uppercase tracking-[0.3em] text-pink-500 font-black mb-4 flex items-center">
+                <span class="w-10 h-[2px] bg-pink-500 mr-3"></span> Expedientes de Misterios
+            </h2>
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">El Fantasma de Leonida</h3>
+                    <p class="text-gray-400 text-sm">Avistamientos reportados en los pantanos durante la luna llena.</p>
                 </div>
+                <button class="btn-teoria px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:scale-105 transition">
+                    Ver Teorías
+                </button>
             </div>
-        </section>
+        </div>
 
-        <section id="personajes" class="space-y-6">
-            <h2 class="text-2xl font-bold border-l-4 border-pink-500 pl-4">PROTAGONISTAS CONFIRMADOS</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="card p-4 rounded-xl flex items-center gap-4">
-                    <div class="w-16 h-16 bg-pink-900/30 rounded-full flex items-center justify-center border border-pink-500">L</div>
-                    <div><h4 class="font-bold">Lucia</h4><p class="text-xs text-gray-500">Ex-convicta / Liderazgo</p></div>
-                </div>
-                <div class="card p-4 rounded-xl flex items-center gap-4">
-                    <div class="w-16 h-16 bg-cyan-900/30 rounded-full flex items-center justify-center border border-cyan-500">J</div>
-                    <div><h4 class="font-bold">Jason</h4><p class="text-xs text-gray-500">Conductor / Lealtad</p></div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="content-card p-6 flex items-center gap-5 border-l-4 border-pink-500">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-purple-700 flex items-center justify-center text-xl font-black">L</div>
+                <div>
+                    <h4 class="text-lg font-bold">Lucia</h4>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Ex-convicta / Liderazgo</p>
                 </div>
             </div>
-        </section>
+            <div class="content-card p-6 flex items-center gap-5 border-l-4 border-cyan-500">
+                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-700 flex items-center justify-center text-xl font-black">J</div>
+                <div>
+                    <h4 class="text-lg font-bold">Jason</h4>
+                    <p class="text-xs text-gray-500 uppercase tracking-widest">Conductor / Lealtad</p>
+                </div>
+            </div>
+        </div>
 
-        <section class="space-y-4">
-            <h2 class="text-2xl font-bold border-l-4 border-green-500 pl-4">DATOS TÉCNICOS ANALIZADOS</h2>
-            <div class="grid grid-cols-2 gap-4 text-sm">
-                <div class="bg-gray-900/50 p-3 rounded-lg border border-gray-800">✅ +700 Interiores</div>
-                <div class="bg-gray-900/50 p-3 rounded-lg border border-gray-800">✅ Sistema de 6 Estrellas</div>
-                <div class="bg-gray-900/50 p-3 rounded-lg border border-gray-800">✅ Inventario en Maletero</div>
-                <div class="bg-gray-900/50 p-3 rounded-lg border border-gray-800">✅ Red Social en Tiempo Real</div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 text-center">
+                <p class="text-cyan-400 font-bold text-xl">+700</p>
+                <p class="text-[9px] uppercase tracking-tighter opacity-50 font-bold">Interiores</p>
             </div>
-        </section>
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 text-center">
+                <p class="text-pink-400 font-bold text-xl">6</p>
+                <p class="text-[9px] uppercase tracking-tighter opacity-50 font-bold">Estrellas</p>
+            </div>
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 text-center">
+                <p class="text-purple-400 font-bold text-xl">REAL</p>
+                <p class="text-[9px] uppercase tracking-tighter opacity-50 font-bold">Inventario</p>
+            </div>
+            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 text-center">
+                <p class="text-yellow-400 font-bold text-xl">LIVE</p>
+                <p class="text-[9px] uppercase tracking-tighter opacity-50 font-bold">Social Net</p>
+            </div>
+        </div>
 
     </main>
 
-    <footer class="p-10 text-center text-gray-600 text-xs border-t border-gray-900">
-        &copy; 2026 ZAN NETWORK - LA RED DEFINITIVA DE GTA VI
+    <footer class="mt-20 p-12 text-center border-t border-white/5">
+        <p class="text-[10px] uppercase tracking-[0.5em] opacity-30 font-bold">ZAN NETWORK © 2026</p>
     </footer>
+
 </body>
 </html>
