@@ -7,148 +7,149 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&display=swap');
-        
-        body { 
-            background-color: #0f0f10; 
-            color: #f1f1f1; 
-            font-family: 'Outfit', sans-serif;
-            background-image: radial-gradient(circle at top right, #1e1b4b, #0f0f10);
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+        body {
+            /* Fondo inspirado en Vice City / GTA VI */
+            background: linear-gradient(to bottom, rgba(15, 15, 20, 0.8), rgba(15, 15, 20, 0.95)), 
+                        url('https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat fixed;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
         }
 
-        .gradient-text {
-            background: linear-gradient(135deg, #ff007f, #00f2ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 900;
-        }
+        h1, h2, h3, .font-oswald { font-family: 'Oswald', sans-serif; }
 
-        .nav-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+        /* Estilos del menú (como en tu vídeo) */
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #ccc;
+            transition: 0.3s;
+            cursor: pointer;
         }
+        .nav-btn:hover { background: rgba(255, 255, 255, 0.1); color: white; }
+        .nav-btn.active { background: #ff3b3b; color: white; } /* El color rojo/naranja del vídeo */
 
-        .nav-card:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border-color: #00f2ff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        /* Cajas de la cuenta regresiva */
+        .countdown-box {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 59, 59, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            min-width: 100px;
+            text-align: center;
+            backdrop-filter: blur(5px);
         }
+        .countdown-number { font-size: 3rem; font-weight: bold; color: #ff3b3b; font-family: 'Oswald', sans-serif;}
+        .countdown-label { font-size: 12px; color: #aaa; text-transform: uppercase; letter-spacing: 2px;}
 
-        .content-card {
-            background: #161617;
-            border-radius: 24px;
-            border: 1px solid #2d2d2e;
-        }
-
-        .btn-teoria {
-            background: linear-gradient(90deg, #ff007f, #7000ff);
-            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.3);
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            display: inline-block;
-            background: #00ff88;
-            box-shadow: 0 0 10px #00ff88;
-            margin-right: 10px;
-        }
+        /* Ocultar secciones no activas */
+        .section-content { display: none; animation: fadeIn 0.5s; }
+        .section-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="min-h-screen">
+<body>
 
-    <header class="p-8 max-w-6xl mx-auto flex justify-between items-center">
-        <h1 class="text-4xl tracking-tighter gradient-text">ZAN NETWORK</h1>
-        <div class="bg-black/40 border border-white/10 px-4 py-2 rounded-full text-[10px] tracking-[0.2em] uppercase text-cyan-400 font-bold">
-            <span class="status-dot"></span> Server: Active
+    <header class="border-b border-white/10 bg-black/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="text-3xl font-oswald text-orange-500 font-bold tracking-tighter">VI</span>
+                <span class="text-xl font-bold tracking-widest uppercase">Zan Network</span>
+            </div>
+            
+            <nav class="hidden md:flex gap-2">
+                <div class="nav-btn active" onclick="changeTab('inicio', this)"><i class="fa-solid fa-house"></i> Inicio</div>
+                <div class="nav-btn" onclick="changeTab('misterios', this)"><i class="fa-solid fa-magnifying-glass"></i> Misterios</div>
+                <div class="nav-btn" onclick="changeTab('personajes', this)"><i class="fa-solid fa-users"></i> Personajes</div>
+                <div class="nav-btn" onclick="changeTab('mapa', this)"><i class="fa-solid fa-map"></i> Mapa</div>
+                <div class="nav-btn" onclick="changeTab('biblioteca', this)"><i class="fa-solid fa-book"></i> Biblioteca</div>
+            </nav>
         </div>
     </header>
 
-    <nav class="max-w-5xl mx-auto px-6 grid grid-cols-5 gap-3 mb-12">
-        <a href="#" class="nav-card p-4 rounded-2xl text-center">
-            <i class="fa-solid fa-house text-xl mb-2 text-cyan-400"></i>
-            <p class="text-[10px] uppercase tracking-wider font-bold opacity-70">Inicio</p>
-        </a>
-        <a href="#" class="nav-card p-4 rounded-2xl text-center">
-            <i class="fa-solid fa-bolt text-xl mb-2 text-purple-400"></i>
-            <p class="text-[10px] uppercase tracking-wider font-bold opacity-70">Misterios</p>
-        </a>
-        <a href="#" class="nav-card p-4 rounded-2xl text-center">
-            <i class="fa-solid fa-user-ninja text-xl mb-2 text-pink-400"></i>
-            <p class="text-[10px] uppercase tracking-wider font-bold opacity-70">Personajes</p>
-        </a>
-        <a href="#" class="nav-card p-4 rounded-2xl text-center">
-            <i class="fa-solid fa-gamepad text-xl mb-2 text-yellow-400"></i>
-            <p class="text-[10px] uppercase tracking-wider font-bold opacity-70">Trucos</p>
-        </a>
-        <a href="#" class="nav-card p-4 rounded-2xl text-center border-cyan-500/50">
-            <i class="fa-solid fa-database text-xl mb-2 text-green-400"></i>
-            <p class="text-[10px] uppercase tracking-wider font-bold opacity-70">Biblioteca</p>
-        </a>
-    </nav>
+    <main class="max-w-6xl mx-auto px-6 py-12">
 
-    <main class="max-w-5xl mx-auto px-6 space-y-8">
-        
-        <div class="content-card p-8">
-            <h2 class="text-xs uppercase tracking-[0.3em] text-pink-500 font-black mb-4 flex items-center">
-                <span class="w-10 h-[2px] bg-pink-500 mr-3"></span> Expedientes de Misterios
-            </h2>
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                <div>
-                    <h3 class="text-2xl font-bold mb-2">El Fantasma de Leonida</h3>
-                    <p class="text-gray-400 text-sm">Avistamientos reportados en los pantanos durante la luna llena.</p>
-                </div>
-                <button class="btn-teoria px-6 py-3 rounded-xl text-xs font-black uppercase tracking-widest hover:scale-105 transition">
-                    Ver Teorías
-                </button>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="content-card p-6 flex items-center gap-5 border-l-4 border-pink-500">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-purple-700 flex items-center justify-center text-xl font-black">L</div>
-                <div>
-                    <h4 class="text-lg font-bold">Lucia</h4>
-                    <p class="text-xs text-gray-500 uppercase tracking-widest">Ex-convicta / Liderazgo</p>
+        <section id="inicio" class="section-content active text-center pt-10">
+            <h2 class="text-sm tracking-[0.3em] text-orange-400 mb-2 uppercase">Central de Inteligencia GTA VI</h2>
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <span class="text-8xl font-oswald text-orange-500 font-bold tracking-tighter" style="text-shadow: 0 0 20px rgba(249, 115, 22, 0.5);">VI</span>
+                <div class="text-left leading-none">
+                    <span class="text-4xl font-bold block">ZAN</span>
+                    <span class="text-4xl font-bold block">NETWORK</span>
                 </div>
             </div>
-            <div class="content-card p-6 flex items-center gap-5 border-l-4 border-cyan-500">
-                <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-700 flex items-center justify-center text-xl font-black">J</div>
-                <div>
-                    <h4 class="text-lg font-bold">Jason</h4>
-                    <p class="text-xs text-gray-500 uppercase tracking-widest">Conductor / Lealtad</p>
+            
+            <p class="text-2xl mt-8 mb-4 font-oswald">La cuenta regresiva hacia Vice City ha comenzado</p>
+            
+            <div class="inline-block bg-black/40 border border-white/10 px-6 py-2 rounded-full text-sm font-bold tracking-widest text-orange-400 mb-8">
+                LANZAMIENTO OFICIAL - 10 NOVIEMBRE 2026
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="countdown-box"><div class="countdown-number">223</div><div class="countdown-label">Días</div></div>
+                <div class="countdown-box"><div class="countdown-number">07</div><div class="countdown-label">Horas</div></div>
+                <div class="countdown-box"><div class="countdown-number">33</div><div class="countdown-label">Min</div></div>
+                <div class="countdown-box"><div class="countdown-number">45</div><div class="countdown-label">Seg</div></div>
+            </div>
+        </section>
+
+        <section id="personajes" class="section-content">
+            <h2 class="text-center text-sm tracking-[0.3em] text-orange-400 mb-2 uppercase">Base de Datos</h2>
+            <h1 class="text-center text-4xl font-oswald font-bold mb-4">FICHAS DE INTELIGENCIA</h1>
+            <p class="text-center text-gray-400 mb-10">Perfiles clasificados de los personajes clave en la red criminal de Leonida.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-[#161618] border border-white/10 rounded-xl overflow-hidden hover:border-orange-500 transition duration-300">
+                    <div class="h-48 bg-gray-800 relative">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover opacity-70" alt="Lucia">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Lucia Caminos</h3>
+                        <p class="text-sm text-gray-400 mb-4 h-20">Protagonista femenina confirmada. Su pasado en prisión la ha endurecido. Experta en infiltración.</p>
+                        <button class="w-full bg-white/5 hover:bg-orange-600 border border-white/10 py-2 rounded-lg text-sm font-bold transition">Ver Ubicación en Mapa</button>
+                    </div>
+                </div>
+
+                <div class="bg-[#161618] border border-white/10 rounded-xl overflow-hidden hover:border-orange-500 transition duration-300">
+                    <div class="h-48 bg-gray-800 relative">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover opacity-70" alt="Jason">
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-xl font-bold mb-2">Jason</h3>
+                        <p class="text-sm text-gray-400 mb-4 h-20">Compañero de Lucia. Conductor experto y leal a la causa. Conoce los bajos fondos de Vice City.</p>
+                        <button class="w-full bg-white/5 hover:bg-orange-600 border border-white/10 py-2 rounded-lg text-sm font-bold transition">Ver Ubicación en Mapa</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 text-center">
-                <p class="text-cyan-400 font-bold text-xl">+700</p>
-                <p class="text-[9px] uppercase tracking-tighter opacity-50 font-bold">Interiores</p>
-            </div>
-            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 text-center">
-                <p class="text-pink-400 font-bold text-xl">6</p>
-                <p class="text-[9px] uppercase tracking-tighter opacity-50 font-bold">Estrellas</p>
-            </div>
-            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 text-center">
-                <p class="text-purple-400 font-bold text-xl">REAL</p>
-                <p class="text-[9px] uppercase tracking-tighter opacity-50 font-bold">Inventario</p>
-            </div>
-            <div class="bg-white/5 p-4 rounded-2xl border border-white/5 text-center">
-                <p class="text-yellow-400 font-bold text-xl">LIVE</p>
-                <p class="text-[9px] uppercase tracking-tighter opacity-50 font-bold">Social Net</p>
-            </div>
-        </div>
+        <section id="misterios" class="section-content text-center pt-20"><h2 class="text-3xl font-oswald text-gray-500">Misterios en construcción...</h2></section>
+        <section id="mapa" class="section-content text-center pt-20"><h2 class="text-3xl font-oswald text-gray-500">Mapa en construcción...</h2></section>
+        <section id="biblioteca" class="section-content text-center pt-20"><h2 class="text-3xl font-oswald text-gray-500">Biblioteca en construcción...</h2></section>
 
     </main>
 
-    <footer class="mt-20 p-12 text-center border-t border-white/5">
-        <p class="text-[10px] uppercase tracking-[0.5em] opacity-30 font-bold">ZAN NETWORK © 2026</p>
-    </footer>
-
+    <script>
+        function changeTab(tabId, element) {
+            // Quitar activo a todos los botones
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            // Poner activo al botón pulsado
+            element.classList.add('active');
+            
+            // Ocultar todas las secciones
+            document.querySelectorAll('.section-content').forEach(sec => sec.classList.remove('active'));
+            // Mostrar la sección elegida
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
 </body>
 </html>
