@@ -1,42 +1,91 @@
-<html lang="es" class="translated-ltr"><grammarly-extension data-grammarly-shadow-root="true" class="dnXmp" style="position: absolute; top: 0px; left: 0px; pointer-events: none; --rem: 16;"></grammarly-extension><head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading...</title>
+    <title>ZAN NETWORK | GTA VI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            height: 100vh;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+        body { background-color: #0f0f10; color: #e1e1e6; font-family: sans-serif; }
+        .neon-text { text-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff; }
+        .card { background: #1a1a1b; border: 1px solid #333; transition: 0.3s; }
+        .card:hover { border-color: #ff00ff; transform: translateY(-5px); }
+        .dot-yellow { color: #facc15; font-weight: bold; margin-right: 8px; }
     </style>
-<link type="text/css" rel="stylesheet" charset="UTF-8" href="https://www.gstatic.com/_/translate_http/_/ss/k=translate_http.tr.2f3WBw8L4SI.L.W.O/am=AAAO/d=0/rs=AN8SPfqEMEisTZAmeZOnTrf_mfOPDE49Nw/m=el_main_css"></head>
-<body data-new-gr-c-s-check-loaded="14.1282.0" data-gr-ext-installed="" data-new-gr-c-s-loaded="14.1282.0">
-    <iframe id="contentFrame" src="https://app.emergent.sh/loading-preview?host=zan-operative.preview.emergentagent.com" allowfullscreen="" spellcheck="false"></iframe>
-    <script>
-        // Listen for messages from the iframe
-        window.addEventListener('message', function(event) {
+</head>
+<body>
+    <header class="p-6 border-b border-gray-800 flex justify-between items-center bg-black/50 sticky top-0 z-50">
+        <h1 class="text-3xl font-black neon-text">ZAN NETWORK</h1>
+        <div class="text-sm font-mono text-cyan-400">LAUNCH: 19.NOV.2026</div>
+    </header>
 
-        	console.log(event.origin);
-            // Optional: Add origin check for security
-            // if (!['https://dev.emergentagent.com', 'https://app.emergent.sh'].includes(event.origin)) return;
+    <nav class="grid grid-cols-5 gap-2 p-4 max-w-4xl mx-auto text-center sticky top-[80px] bg-[#0f0f10] z-40">
+        <a href="#inicio" class="p-4 card rounded-xl hover:bg-gray-800">
+            <i class="fa-solid fa-house text-2xl mb-2 text-cyan-400"></i>
+            <span class="block text-xs uppercase font-bold">Inicio</span>
+        </a>
+        <a href="#misterios" class="p-4 card rounded-xl hover:bg-gray-800">
+            <i class="fa-solid fa-magnifying-glass text-2xl mb-2 text-purple-500"></i>
+            <span class="block text-xs uppercase font-bold">Misterios</span>
+        </a>
+        <a href="#personajes" class="p-4 card rounded-xl hover:bg-gray-800">
+            <i class="fa-solid fa-users text-2xl mb-2 text-pink-500"></i>
+            <span class="block text-xs uppercase font-bold">Personajes</span>
+        </a>
+        <a href="#trucos" class="p-4 card rounded-xl hover:bg-gray-800">
+            <i class="fa-solid fa-keyboard text-2xl mb-2 text-yellow-500"></i>
+            <span class="block text-xs uppercase font-bold">Trucos</span>
+        </a>
+        <a href="#biblioteca" class="p-4 card rounded-xl hover:bg-gray-800">
+            <i class="fa-solid fa-book text-2xl mb-2 text-green-500"></i>
+            <span class="block text-xs uppercase font-bold">Biblioteca</span>
+        </a>
+    </nav>
 
-            if (event.data && event.data.type === 'reload') {
-                const iframe = document.getElementById('contentFrame');
-                window.location.reload();
-            }
+    <main class="max-w-4xl mx-auto p-6 space-y-12">
+        
+        <section id="misterios" class="space-y-6">
+            <h2 class="text-2xl font-bold border-l-4 border-purple-500 pl-4">EXPEDIENTES DE MISTERIOS</h2>
+            <div class="card p-6 rounded-2xl">
+                <h3 class="text-xl font-bold text-cyan-300">El Fantasma de Leonida</h3>
+                <p class="text-gray-400 mt-2">Avistamientos reportados en los pantanos durante la luna llena.</p>
+                <button onclick="document.getElementById('teorias-1').classList.toggle('hidden')" class="mt-4 text-xs font-bold uppercase tracking-widest text-pink-500 border border-pink-500/30 px-4 py-2 rounded-full hover:bg-pink-500/10 transition">Ver Teorías</button>
+                <div id="teorias-1" class="hidden mt-6 space-y-3 bg-black/40 p-4 rounded-lg border-l-2 border-yellow-500">
+                    <p><span class="dot-yellow">1.</span> Es el espíritu de un NPC de una misión secundaria eliminada.</p>
+                    <p><span class="dot-yellow">2.</span> Solo aparece si llevas el colgante de Lucia.</p>
+                </div>
+            </div>
+        </section>
 
-            if (event.data && event.data.type === 'url') {
-                const iframe = document.getElementById('contentFrame');
-                window.open(event.data.url, '_blank');
-            }
-        });
-    </script>
-<script defer="" src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;7f7b0fd8732c4326aae4b9d58d5c514a&quot;,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e9a57083c4c1d3b',t:'MTc3NTc0NjM5Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><iframe height="1" width="1" style="position: absolute; top: 0px; left: 0px; border: none; visibility: hidden;"></iframe><div id="goog-gt-tt" class="VIpgJd-yAWNEb-L7lbkb skiptranslate" style="border-radius: 12px; margin: 0 0 0 -23px; padding: 0; font-family: 'Google Sans', Arial, sans-serif;" data-id=""><div id="goog-gt-vt" class="VIpgJd-yAWNEb-hvhgNd"><div class="VIpgJd-yAWNEb-hvhgNd-Ud7fr"><img src="https://fonts.gstatic.com/s/i/productlogos/translate/v14/24px.svg" width="24" height="24" alt=""><div class=" VIpgJd-yAWNEb-hvhgNd-IuizWc-i3jM8c " dir="ltr">Texto original</div></div><div class="VIpgJd-yAWNEb-hvhgNd-k77Iif"><div id="goog-gt-original-text" class="VIpgJd-yAWNEb-nVMfcd-fmcmS VIpgJd-yAWNEb-hvhgNd-axAV1"></div></div><div class="VIpgJd-yAWNEb-hvhgNd-N7Eqid ltr"><div class="VIpgJd-yAWNEb-hvhgNd-N7Eqid-B7I4Od ltr" dir="ltr"><div class="VIpgJd-yAWNEb-hvhgNd-UTujCb">Valora esta traducción</div><div class="VIpgJd-yAWNEb-hvhgNd-eO9mKe">Tu opinión servirá para ayudar a mejorar el Traductor de Google</div></div><div class="VIpgJd-yAWNEb-hvhgNd-xgov5 ltr"><button id="goog-gt-thumbUpButton" type="button" class="VIpgJd-yAWNEb-hvhgNd-bgm6sf" title="Buena traducción" aria-label="Buena traducción" aria-pressed="false"><span id="goog-gt-thumbUpIcon"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M21 7h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 0S7.08 6.85 7 7H2v13h16c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73V9c0-1.1-.9-2-2-2zM7 18H4V9h3v9zm14-7l-3 7H9V8l4.34-4.34L12 9h9v2z"></path></svg></span><span id="goog-gt-thumbUpIconFilled"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M21 7h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 0S7.08 6.85 7 7v13h11c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73V9c0-1.1-.9-2-2-2zM5 7H1v13h4V7z"></path></svg></span></button><button id="goog-gt-thumbDownButton" type="button" class="VIpgJd-yAWNEb-hvhgNd-bgm6sf" title="Mala traducción" aria-label="Mala traducción" aria-pressed="false"><span id="goog-gt-thumbDownIcon"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M3 17h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 24s7.09-6.85 7.17-7h5V4H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2zM17 6h3v9h-3V6zM3 13l3-7h9v10l-4.34 4.34L12 15H3v-2z"></path></svg></span><span id="goog-gt-thumbDownIconFilled"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M3 17h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 24s7.09-6.85 7.17-7V4H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2zm16 0h4V4h-4v13z"></path></svg></span></button></div></div><div id="goog-gt-votingHiddenPane" class="VIpgJd-yAWNEb-hvhgNd-aXYTce"><form id="goog-gt-votingForm" action="//translate.googleapis.com/translate_voting?client=te_lib" method="post" target="votingFrame" class="VIpgJd-yAWNEb-hvhgNd-aXYTce"><input type="text" name="sl" id="goog-gt-votingInputSrcLang"><input type="text" name="tl" id="goog-gt-votingInputTrgLang"><input type="text" name="query" id="goog-gt-votingInputSrcText"><input type="text" name="gtrans" id="goog-gt-votingInputTrgText"><input type="text" name="vote" id="goog-gt-votingInputVote"></form><iframe name="votingFrame" frameborder="0"></iframe></div></div></div>
-</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration><grammarly-popups data-grammarly-shadow-root="true" class="dnXmp" style="--rem: 16;"></grammarly-popups></html>
+        <section id="personajes" class="space-y-6">
+            <h2 class="text-2xl font-bold border-l-4 border-pink-500 pl-4">PROTAGONISTAS CONFIRMADOS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="card p-4 rounded-xl flex items-center gap-4">
+                    <div class="w-16 h-16 bg-pink-900/30 rounded-full flex items-center justify-center border border-pink-500">L</div>
+                    <div><h4 class="font-bold">Lucia</h4><p class="text-xs text-gray-500">Ex-convicta / Liderazgo</p></div>
+                </div>
+                <div class="card p-4 rounded-xl flex items-center gap-4">
+                    <div class="w-16 h-16 bg-cyan-900/30 rounded-full flex items-center justify-center border border-cyan-500">J</div>
+                    <div><h4 class="font-bold">Jason</h4><p class="text-xs text-gray-500">Conductor / Lealtad</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-4">
+            <h2 class="text-2xl font-bold border-l-4 border-green-500 pl-4">DATOS TÉCNICOS ANALIZADOS</h2>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+                <div class="bg-gray-900/50 p-3 rounded-lg border border-gray-800">✅ +700 Interiores</div>
+                <div class="bg-gray-900/50 p-3 rounded-lg border border-gray-800">✅ Sistema de 6 Estrellas</div>
+                <div class="bg-gray-900/50 p-3 rounded-lg border border-gray-800">✅ Inventario en Maletero</div>
+                <div class="bg-gray-900/50 p-3 rounded-lg border border-gray-800">✅ Red Social en Tiempo Real</div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="p-10 text-center text-gray-600 text-xs border-t border-gray-900">
+        &copy; 2026 ZAN NETWORK - LA RED DEFINITIVA DE GTA VI
+    </footer>
+</body>
+</html>
